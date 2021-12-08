@@ -21,7 +21,7 @@
         <hsqldb.version>2.5.0</hsqldb.version>
         <junit.version>5.7.1</junit.version>
         <fastjson.version>1.2.75</fastjson.version>
-        <mysql-connection.version>8.0.11</mysql-connection.version>
+
     </properties>
 
     <dependencies>
@@ -75,9 +75,16 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-connection.version}</version>
+            <version>8.0.27</version>
             <scope>runtime</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>2.4.1</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -163,6 +170,26 @@
                     </excludes>
                 </configuration>
             </plugin>
+
+            <plugin>
+            <groupId>com.spotify</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <version>1.0.0</version>
+            <configuration>
+                <imageName>main-system</imageName><!--镜像名称，可自定义-->
+                <dockerDirectory>src/main/docker</dockerDirectory><!--Dockerfile文件路径，可自定义-->
+                <resources>
+                    <resource>
+                        <targetPath>/</targetPath>
+                        <directory>${project.build.directory}</directory>
+                        <include>${project.build.finalName}.jar</include>
+                    </resource>
+                </resources>
+            </configuration>
+            </plugin>
+
+
+
         </plugins>
     </build>
 

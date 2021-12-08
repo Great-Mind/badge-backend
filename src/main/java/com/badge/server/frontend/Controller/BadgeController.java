@@ -123,6 +123,7 @@ public class BadgeController {
     @GetMapping("/activehistory")
     public List<DatasetStatBar> getGroupActiveHistory(@PathParam("dataset_id") String dataset_id,
                                                      @PathParam("dataFrom") String dataFrom, @PathParam("dataTo") String dataTo, @PathParam("minute") String minute){
+        // System.out.println("123123123132");
         return badgeService.getActiveHistory(dataset_id,Long.parseLong(dataFrom),Long.parseLong(dataTo), Integer.parseInt(minute));
     }
 

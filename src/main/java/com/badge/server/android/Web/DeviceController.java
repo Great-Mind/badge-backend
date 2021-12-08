@@ -22,9 +22,9 @@ public class DeviceController {
 
     @PostMapping(value="/login")
     public String login(HttpSession session, @RequestBody AndroidRequest androidRequest){
-//        System.out.println("new Phone");
         String dataJson = AES.Decryption.decrypt(androidRequest.getData(),
                 GlobalParameters.Encryption.secretKey,GlobalParameters.Encryption.algorithm);
+        System.out.println(dataJson);
         MetaData metaData = JSON.parseObject(dataJson,MetaData.class);
         System.out.println("in");
         if (androidDeviceService.login(metaData,session.getServletContext())){

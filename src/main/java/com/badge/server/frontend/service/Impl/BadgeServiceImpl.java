@@ -146,6 +146,7 @@ public class BadgeServiceImpl implements BadgeService {
             long dataFrom1 = dataFrom + i * interval;
             long dataTo1 = dataFrom + (i+1)* interval;
             Integer num = datasetStatRepository.findMaxByDatasetidAndTimestampAfterAndTimestampBefore(dataset_id,dataFrom1,dataTo1);
+            System.out.println(num);
             DatasetStatBar datasetStatBar = new DatasetStatBar();
             datasetStatBar.setDatasetid(dataset_id);
             datasetStatBar.setMed((dataFrom1+dataTo1)/2);
@@ -156,7 +157,7 @@ public class BadgeServiceImpl implements BadgeService {
             }
             datasetStatBars.add(datasetStatBar);
         }
-
+        // System.out.println(datasetStatBars);
         return datasetStatBars;
     }
 
@@ -268,7 +269,9 @@ public class BadgeServiceImpl implements BadgeService {
     @Override
     public DatasetStatFrontEnd getActiveHistory(String dataset_id, int minute) {
         DatasetStatFrontEnd datasetStatFrontEnd = new DatasetStatFrontEnd();
+        System.out.println("12312132");
         List<DatasetStat> datasetStatList = datasetStatRepository.findAllByDatasetid(dataset_id);
+        System.out.println(datasetStatList);
         datasetStatFrontEndHelper(datasetStatFrontEnd,datasetStatList,dataset_id);
         return datasetStatFrontEnd;
     }

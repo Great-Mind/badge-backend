@@ -33,3 +33,4 @@ public interface AndroidDeviceService {
      */
     public void saveNearMacs(MacAddress macAddress);
 }
+

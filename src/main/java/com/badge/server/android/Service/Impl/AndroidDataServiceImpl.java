@@ -58,6 +58,7 @@ public class AndroidDataServiceImpl implements AndroidDeviceService {
 
     @Override
     public boolean login(MetaData metaData, ServletContext servletContext) {
+        System.out.println("get login request");
         assert metaData != null;
         Badge badge = JSON2RawData.meta2Badge(metaData);
             ConcurrentHashMap<String,Long> onlineBadges = (ConcurrentHashMap<String, Long>) servletContext.getAttribute("badge");
@@ -121,6 +122,7 @@ public class AndroidDataServiceImpl implements AndroidDeviceService {
         synchronized (nearMacsLock){
             if (nearMacsLinkedList.size() > 0) {
 //                System.out.println(nearMacsSerialNum++);
+                System.out.println(nearMacsLinkedList);
                 nearMacsRepository.saveAll(nearMacsLinkedList);
 //                System.out.println("Mac Time Consumption:" + (System.currentTimeMillis() - time1));
             }

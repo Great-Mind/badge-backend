@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class ServerApplication {
 
     public static void main(String[] args) {
+        System.out.println("12312312132");
         ConfigurableApplicationContext applicationContext = SpringApplication.run(ServerApplication.class, args);
     }
 
